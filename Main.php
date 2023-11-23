@@ -71,7 +71,7 @@ session_start();
     <button onclick="nextImage()">Следующий букет</button>
   </main>
   <footer>
-    <p>&copy; 2023 Магазин Цветов</p>
+    <p>&copy; 2023 Магазин цветов. Мезенцева Софья, 221-361, Рубежный контроль №2</p>
   </footer>
 </body>
 </html>

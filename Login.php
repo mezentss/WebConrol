@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Вход</title>
+  <link rel="stylesheet" href="slyles.css">
 </head>
 <body>
   <h1>Вход</h1>
@@ -12,11 +13,14 @@
     <input type="password" name="password" placeholder="Пароль" required>
     <button type="submit">Войти</button>
   </form>
-</body>
+  <br><br><br>
+<footer>
+    <p>&copy; 2023 Магазин цветов. Мезенцева Софья, 221-361, Рубежный контроль №2</p>
+  </footer>
+  </body>
 </html>
 
 <?php
-// Подключение к базе данных
 $servername = "localhost";
 $username = "root";
 $password = "00000000";

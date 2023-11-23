@@ -68,8 +68,8 @@ $result = $conn->query($sql);
     ?>
   </table>
 </main>
-  <footer>
-    <p>&copy; 2023 Магазин Цветов</p>
+<footer>
+    <p>&copy; 2023 Магазин цветов. Мезенцева Софья, 221-361, Рубежный контроль №2</p>
   </footer>
 </body>
 </html>

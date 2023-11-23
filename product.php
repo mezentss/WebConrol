@@ -23,6 +23,23 @@ try {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Информация о продукте</title>
   <link rel="stylesheet" href="slyles.css">
+  <script>
+    function addToCart(productId) {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "addToCart.php?id=" + productId, true);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        var quantityElement = document.getElementById('quantity');
+        quantityElement.textContent = parseInt(quantityElement.textContent) - 1;
+      } else {
+      }
+    }
+  };
+  xhr.send();
+}
+
+  </script>
 </head>
 <body>
   <header>
@@ -46,19 +63,27 @@ try {
   </header>
   <main>
     <?php
+    if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = array();
+  }
+
       $productId = $_GET['id']; 
       $sql = "SELECT * FROM flowers JOIN count ON flowers.id = count.id WHERE flowers.id = $productId";
       $productInfo = $conn->query($sql)->fetch(PDO::FETCH_ASSOC); 
       echo "<h2>" . $productInfo['description'] . "</h2>";
       echo "<p>Цена: " . $productInfo['price'] . "</p>";
       echo "<p>Характеристики: " . $productInfo['characteristics'] . "</p>";
-      echo "<p>Количество в наличии: " . $productInfo['quantity'] . "</p>";
+      echo "<p>Количество в наличии: <span id='quantity'>" . $productInfo['quantity'] . "</span></p>";
       echo "<img src='" . $productInfo['photo'] . "'>";
       
+      $sql = "UPDATE count SET quantity = quantity - 1 WHERE id = $productId";
+      $conn->exec($sql);
     ?>
+    <br>
+    <button onclick="addToCart(<?php echo $productId; ?>)">Добавить в корзину</button>
   </main>
   <footer>
-    <p>&copy; 2023 Магазин Цветов</p>
+    <p>&copy; 2023 Магазин цветов. Мезенцева Софья, 221-361, Рубежный контроль №2</p>
   </footer>
 </body>
 </html>

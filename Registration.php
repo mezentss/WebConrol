@@ -1,9 +1,14 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Регистрация</title>
+  <link rel="stylesheet" href="slyles.css">
 </head>
 <body>
   <h1>Регистрация</h1>
@@ -11,8 +16,12 @@
     <input type="text" name="username" placeholder="Имя пользователя" required>
     <input type="password" name="password" placeholder="Пароль" required>
     <button type="submit">Зарегистрироваться</button>
+    <br><br><br>
   </form>
-</body>
+<footer>
+    <p>&copy; 2023 Магазин цветов. Мезенцева Софья, 221-361, Рубежный контроль №2</p>
+  </footer>
+  </body>
 </html>
 
 <?php
