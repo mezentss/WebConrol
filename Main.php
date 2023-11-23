@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,12 +34,22 @@
   </script>
 </head>
 <body>
+</head>
+<body>
   <header>
     <nav>
       <ul>
         <li><a href="Main.php">Главная</a></li>
         <li><a href="Shop.php">Магазин</a></li>
         <li><a href="Contact.php">Контакты</a></li>
+        <?php
+          if(isset($_SESSION['username'])) {
+            echo "<li><a href='Cart.php'>Корзина</a></li>";
+          } else {
+            echo "<li><a href='Registration.php'>Регистрация</a></li>";
+            echo "<li><a href='Login.php'>Вход</a></li>";
+          }
+        ?>
       </ul>
     </nav>
   </header>

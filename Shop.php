@@ -27,11 +27,13 @@ $result = $conn->query($sql);
 <body>
   <header>
     <nav>
-      <ul>
-        <li><a href="Main.php">Главная</a></li>
-        <li><a href="Shop.php">Магазин</a></li>
-        <li><a href="Contact.php">Контакты</a></li>
-      </ul>
+    <ul>
+    <li><a href="Main.php">Главная</a></li>
+    <li><a href="Shop.php">Магазин</a></li>
+    <li><a href="Contact.php">Контакты</a></li>
+    <li><a href="Registration.php">Регистрация</a></li>
+    <li><a href="Login.php">Вход</a></li>
+  </ul>
     </nav>
   </header>
   <main>
@@ -45,10 +47,10 @@ $result = $conn->query($sql);
     <?php
       foreach($result as $row) {
         echo "<tr>";
-        echo "<td>" . $row['description'] . "</td>";
-        echo "<td><img src='" . $row['photo'] . "'></td>";
-        echo "<td>" . $row['price'] . "</td>";
-        echo "<td><a href='product.php?id=" . $row['id'] . "'>Подробнее</a></td>";
+        echo "<td class = 'description'>" . $row['description'] . "</td>";
+        echo "<td class = 'photo'><img src='" . $row['photo'] . "'></td>";
+        echo "<td class = 'price'>" . $row['price'] . "</td>";
+        echo "<td class = 'link'><a href='product.php?id=" . $row['id'] . "'>Подробнее</a></td>";
         echo "</tr>";
       }
     ?>

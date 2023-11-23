@@ -23,11 +23,13 @@ try {
 <body>
   <header>
     <nav>
-      <ul>
-        <li><a href="Main.php">Главная</a></li>
-        <li><a href="Shop.php">Магазин</a></li>
-        <li><a href="Contact.php">Контакты</a></li>
-      </ul>
+    <ul>
+    <li><a href="Main.php">Главная</a></li>
+    <li><a href="Shop.php">Магазин</a></li>
+    <li><a href="Contact.php">Контакты</a></li>
+    <li><a href="Registration.php">Регистрация</a></li>
+    <li><a href="Login.php">Вход</a></li>
+  </ul>
     </nav>
   </header>
   <main>
