@@ -1,4 +1,8 @@
 <?php
+session_start();
+?>
+
+<?php
 $servername = "localhost";
 $username = "root";
 $password = "00000000";
@@ -26,14 +30,22 @@ $result = $conn->query($sql);
 </head>
 <body>
   <header>
-    <nav>
-    <ul>
-    <li><a href="Main.php">Главная</a></li>
-    <li><a href="Shop.php">Магазин</a></li>
-    <li><a href="Contact.php">Контакты</a></li>
-    <li><a href="Registration.php">Регистрация</a></li>
-    <li><a href="Login.php">Вход</a></li>
-  </ul>
+  <nav>
+      <ul>
+        <li><a href="Main.php">Главная</a></li>
+        <li><a href="Shop.php">Магазин</a></li>
+        <li><a href="Contact.php">Контакты</a></li>
+        <?php
+          if(isset($_SESSION['username'])) {
+            echo "<li><a href='Cart.php'>Корзина</a></li>";
+            echo "<li style='display: none;'><a href='Registration.php'>Регистрация</a></li>";
+            echo "<li style='display: none;'><a href='Login.php'>Вход</a></li>";
+          } else {
+            echo "<li><a href='Registration.php'>Регистрация</a></li>";
+            echo "<li><a href='Login.php'>Вход</a></li>";
+          }
+          ?>
+      </ul>
     </nav>
   </header>
   <main>

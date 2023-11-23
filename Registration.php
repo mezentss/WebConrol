@@ -16,7 +16,6 @@
 </html>
 
 <?php
-// Подключение к базе данных
 $servername = "localhost";
 $username = "root";
 $password = "00000000";
@@ -48,4 +47,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $conn->close();
+
+session_start();
+$_SESSION['username'] = $username;
+
 ?>
+

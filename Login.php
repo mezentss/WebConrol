@@ -50,5 +50,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $conn->close();
+
+session_start();
+$_SESSION['username'] = $username;
+
 ?>
 
