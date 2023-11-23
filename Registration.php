@@ -24,16 +24,28 @@ $dbname = "webcontrol";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
 
-$sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
-if ($result->num_rows > 0) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+
+  $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("ss", $username, $password);
+
+  if ($stmt->execute()) {
     header("Location: Main.php");
     exit();
   } else {
-    echo "Ошибка регистрации";
+    echo "Ошибка регистрации: " . $conn->error;
   }
+
+  $stmt->close();
+}
 
 $conn->close();
 ?>

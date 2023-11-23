@@ -16,6 +16,7 @@
 </html>
 
 <?php
+// Подключение к базе данных
 $servername = "localhost";
 $username = "root";
 $password = "00000000";
@@ -23,18 +24,31 @@ $dbname = "webcontrol";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
 
-$sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-$result = $conn->query($sql);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $username = $_POST['username'];
+  $password = $_POST['password'];
 
-if ($result->num_rows > 0) {
+  $sql = "SELECT * FROM users WHERE username=? AND password=?";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("ss", $username, $password);
+
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  if ($result->num_rows > 0) {
     header("Location: Main.php");
     exit();
   } else {
     echo "Неверное имя пользователя или пароль";
   }
 
+  $stmt->close();
+}
+
 $conn->close();
 ?>
+
